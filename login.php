@@ -1,4 +1,5 @@
 <?php 
+
  //Mensajes de error por si el logeo falla
 
 	$error=0;
