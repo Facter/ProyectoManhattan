@@ -1,39 +1,43 @@
 <!DOCTYPE HTML>
- <META CHARSET="UTF-8">
+
+<!-- Responsividad segun la resolución -->
+<META CHARSET="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <html>
-	<header><center>
 		<head>
+			<title>Proyecto SECRETO!</title>
 			 <!-- Bootstrap -->
 		    <link href="css/bootstrap.min.css" rel="stylesheet">
-
 		    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 		    <!--[if lt IE 9]>
 		      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 		      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 		    <![endif]-->
+			<!--Esto es para que aparesca el nombre de usuario y las opciones-->
+			<?php 
+				session_start();
+				if (isset($_SESSION['nombre'])) {
+					echo "Bienvenido ".$_SESSION['nombre']." <a href='cerrarsesion.php'>Cerrar sesion</a> | ";
+					if ($_SESSION['tipo']==1) 
+						echo "<a href='cambiarusuario.php'> Control de usuarios </a>";
+					if ($_SESSION['tipo']==2 or $_SESSION['tipo']==1) 
+							echo "<a href='ntemas.php'>| Añadir nuevo tema</a>"; 
+				}	
+				else
+					echo "Bienvenido <a href='login.php'>Inicia sesion</a> o <a href='registro.php'>registrate</a>";
+				?>
 		</head>
-	<!--Esto es para que aparesca el nombre de usuario y las opciones-->
-		<?php 
-			session_start();
-			if (isset($_SESSION['nombre'])) {
-				echo "Bienvenido ".$_SESSION['nombre']." <a href='cerrarsesion.php'>Cerrar sesion</a> | ";
-				if ($_SESSION['tipo']==1) 
-					echo "<a href='cambiarusuario.php'> Control de usuarios </a>";
-				if ($_SESSION['tipo']==2 or $_SESSION['tipo']==1) 
-						echo "<a href='ntemas.php'>| Añadir nuevo tema</a>"; 
-			}	
-			else
-				echo "Bienvenido <a href='login.php'>Inicia sesion</a> o <a href='registro.php'>registrate</a>";
-			?>
-	</center></header>
-	<body><center>
-		<title>Blog de TIAV</title>
-		<header><h1>Blog de TIA. Bienvenido
+	<body>
+		<h1>Blog de TIA. Bienvenido
 		<?php 
 			if (isset($_SESSION['nombre'])) 
 				echo $_SESSION['nombre'];
-			echo "</h1></header>";
+			echo "</h1>";
+			//Aqui termnina el enunciado del nombre
+			//Aqui inicia el despliegue de temas del blog
 			include_once("settings/settings.inc.php");
 			$conexion=@mysql_connect(SQL_HOST, SQL_USER, SQL_PWD);
 			@mysql_select_db(SQL_DB, $conexion) or die(mysql_error());
@@ -68,11 +72,13 @@
 									echo "<a href='ncomentario.php?ncomentario=".$tema['id']."&prev=".$tema['id']."'> | Comentar |</a>";
 
 							}
+				//Cierre de TD y otras etiquetas
 				echo "</td>";	
 				echo "</tr>";
 				echo "<tr><td><h5>".$tema['nombre']."</h5></td><td><i> Publicado el: ".$tema['fecha_pub']."</i></td></tr>";
 				echo "<tr><td colspan='2'>".$tema['contenido']."</td></tr>";
 				echo "<tr><td colspan='2'><b>Comentarios</b></td></tr>";
+				//Arreglo estetico
 				$ncomentarios=0;
 				while ($comentario = @mysql_fetch_array($comentarios)) {
 					echo "<tr>";
@@ -88,18 +94,18 @@
 					echo "</tr>";
 					$ncomentarios = $ncomentarios+1;
 				}
+				//Mostrar "Sin comentarios" cuando no haya ninguno
 				if ($ncomentarios < 1)
 					echo "<tr><td colspan='2'><i>sin comentarios </i><a href='ncomentario.php?ncomentario=".$tema['id']."&prev=".$tema['id']."'>Añadir comentario</a></td></tr>";
 			}
 			echo "</table>";
 			@mysql_close($conexion);
+			//Final del blog y temas
 		?>
-		</center>
-		  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	    <!-- Include all compiled plugins (below), or include individual files as needed -->
 	    <script src="js/bootstrap.min.js"></script>
 	</body>
-	<hr>
-	<b>Un blog con 506 lineas de código</b>
+	<!--Aqui va un pie de pagina -->
 </html>

@@ -23,7 +23,8 @@
  ?>
 
 <!DOCTYPE HTML>
-<META CHARSET="UTF-8">
+<META CHARSET="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <html>
 	<head>
 	<title>Inicia sesión</title>
@@ -37,7 +38,8 @@
 	      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 	    <![endif]-->
 	</head>
-	<body><center>
+	<body>
+		
 		<table border="0">	
 			<tr><td><h1> Inicia Sesión </h1></td></tr>
 			<form action="validarlogin.php" method="POST" name="login" id='contact-form' class='contact-form2'>
@@ -48,7 +50,8 @@
 				<tr><td> <input type="password" name="userpwd" id="userpwd" maxlength="15" placeholder="Contraseña" size="25"></td><tr>
 				<tr><td> <input type='submit' id='contact-form' class='submit' value='Iniciar sesión'> o <a href="registro.php">Registrate</a></td></tr>
 			</form>
-		</center></table>
+		</table>
+
 		    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		    <!-- Include all compiled plugins (below), or include individual files as needed -->

@@ -67,7 +67,13 @@
 	}
  ?>
 <!DOCTYPE HTML>
+
+<!-- Responsividad segun la resolución -->
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <META CHARSET="UTF-8">
+	
 <html>
 	<head>
 		<title>Nuevo Comentario | Blog</title>

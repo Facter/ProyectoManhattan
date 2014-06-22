@@ -64,7 +64,12 @@
 	}
  ?>
 <!DOCTYPE HTML>
+
+<!-- Responsividad segun la resolución -->
 <META CHARSET="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <html>
 	<head>
 		<title>Registrate</title>
@@ -78,7 +83,7 @@
 		      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 		    <![endif]-->
 	</head>
-	<body><center>
+	<body>
 		<h1>Registrate</h1>
 		<form action="registro.php" method="POST" name="registro" id='contact-form' class='contact-form2'>
 		<table>
@@ -100,8 +105,8 @@
 			
 		</table>
 		</form>
-		</center>
-		    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		
+	    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	    <!-- Include all compiled plugins (below), or include individual files as needed -->
 	    <script src="js/bootstrap.min.js"></script>
