@@ -84,27 +84,29 @@
 		    <![endif]-->
 	</head>
 	<body>
-		<h1>Registrate</h1>
-		<form action="registro.php" method="POST" name="registro" id='contact-form' class='contact-form2'>
-		<table>
-			<tr><td><b>Nombre:</b></td>
-				<td><input type="hidden" name="idusr" value="<?php echo $idusr; ?>">
-					<input type="text" name="nombre" placeholder="Ejemplo: Juan López"
-					<?php echo "value='".$rnombre."'></td></tr>";?>
-			<tr><td><b>Usuario:</b></td><td><input type="text" name="usuario"placeholder='Júan Lopez'
-				<?php echo "value='".$rusuario."'></td></tr>";?>
-			<tr><td><b>Contraseña:</b></td><td><input type="password" name="pass" placeholder="*******"value=<?php echo $rpass; ?>></td></tr>
-			<?php echo $mensaje; ?>
-			<!--Aqui inicia una seccion para cambiar el tipo de usuario-->
-			<?php if (isset($_GET['idusr']))
-				echo "<tr><td><b>Tipo</b></td><td><input type='text' name='tipo' placeholder='1, 2, 3' value='".$rtipo."'><td></tr>";
-				else
-				echo "<tr align='center'><td colspan='2'><i>Usted es usuario Tipo 3</i></td></tr>";
-			 ?>
-			<tr><td colspan='2'><input type='submit' value='Registrarme'> o <a href="login.php">Inicia Sesión</a></td></tr>
-			
-		</table>
-		</form>
+		<div class="container">
+			<h1>Registrate</h1>
+			<form action="registro.php" method="POST" name="registro" id='contact-form' class='contact-form2'>
+			<table>
+				<tr><td><b>Nombre:</b></td>
+					<td><input type="hidden" name="idusr" value="<?php echo $idusr; ?>">
+						<input type="text" name="nombre" placeholder="Ejemplo: Juan López"
+						<?php echo "value='".$rnombre."'></td></tr>";?>
+				<tr><td><b>Usuario:</b></td><td><input type="text" name="usuario"placeholder='Júan Lopez'
+					<?php echo "value='".$rusuario."'></td></tr>";?>
+				<tr><td><b>Contraseña:</b></td><td><input type="password" name="pass" placeholder="*******"value=<?php echo $rpass; ?>></td></tr>
+				<?php echo $mensaje; ?>
+				<!--Aqui inicia una seccion para cambiar el tipo de usuario-->
+				<?php if (isset($_GET['idusr']))
+					echo "<tr><td><b>Tipo</b></td><td><input type='text' name='tipo' placeholder='1, 2, 3' value='".$rtipo."'><td></tr>";
+					else
+					echo "<tr align='center'><td colspan='2'><i>Usted es usuario Tipo 3</i></td></tr>";
+				 ?>
+				<tr><td colspan='2'><input type='submit' value='Registrarme'> o <a href="login.php">Inicia Sesión</a></td></tr>
+				
+			</table>
+			</form>
+		</div>
 		
 	    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>

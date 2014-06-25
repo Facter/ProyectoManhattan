@@ -69,20 +69,21 @@
 		    <![endif]-->
 		</head>
 		<body>
-		<center><br>
-			<h2>AÑADE EL NUEVO CONTENIDO AL BLOG</h2>
-				<form action="ntemas.php" method="POST" name="comentario">
-					<input type="hidden" name="idusr" value="<?php echo $id_usuario; ?>">
-					<input type="hidden" name="idtema" value="<?php echo $id; ?>">
-					<input type="text" name="tema" id="tema" placeholder="Titulo del blog" size="100" value="<?php echo $rtitulo; ?>"><br><br>
-					<textarea name="contenido" id="contenido" cols="130" rows="10" placeholder="Presiona para insertar tu texto o contenido"><?php echo $rcontenido; ?></textarea><br>
-					<input type="submit" value="Publicar tema">
-					<a href='index.php'> Cancelar</a>
-				</form>
-		</center>
-		    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-		    <!-- Include all compiled plugins (below), or include individual files as needed -->
-		    <script src="js/bootstrap.min.js"></script>
+			<div class="container">
+				<br>
+				<h2>AÑADE EL NUEVO CONTENIDO AL BLOG</h2>
+					<form action="ntemas.php" method="POST" name="comentario">
+						<input type="hidden" name="idusr" value="<?php echo $id_usuario; ?>">
+						<input type="hidden" name="idtema" value="<?php echo $id; ?>">
+						<input type="text" name="tema" id="tema" placeholder="Titulo del blog" size="100" value="<?php echo $rtitulo; ?>"><br><br>
+						<textarea name="contenido" id="contenido" cols="130" rows="10" placeholder="Presiona para insertar tu texto o contenido"><?php echo $rcontenido; ?></textarea><br>
+						<input type="submit" value="Publicar tema">
+						<a href='index.php'> Cancelar</a>
+					</form>
+			    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+			    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+			    <!-- Include all compiled plugins (below), or include individual files as needed -->
+			    <script src="js/bootstrap.min.js"></script>
+		    </div>
 		</body>
 	</html>
