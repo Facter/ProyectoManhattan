@@ -21,11 +21,13 @@
 		$sql="SELECT * FROM blog.usuarios;";
 		$usuarios=mysql_query($sql, $conexion);
 		if (isset($_SESSION['usuario'])) {
-			echo "<div class='col-md-8'></div>";
-			echo "<div class='col-md-4'>";
-			echo "<p align='right'><label class='glyphicon glyphicon-ok'></label> Hola ".$_SESSION['nombre']." ";
-			echo "<a href='cerrarsesion.php'>| Cerrar sesion </a>";
-			echo "<a href='index.php'>| <p align='right'><label class='glyphicon glyphicon-home'></label> Página principal |</a><p>";
+			echo "<div class='row'";
+				echo "<div class='col-md-7'></div>";
+				echo "<div class='col-md-5'>";
+					echo "<p align='right'>";
+					echo "<a class='btn btn-danger' href='cerrarsesion.php'><span class='glyphicon glyphicon-remove'></span> Cerrar sesion</a> ";
+					echo "<a class='btn btn-default' href='index.php'><span class=' glyphicon glyphicon-home'></span> Página principal</a> <label class='glyphicon glyphicon-ok'></label> Hola ".$_SESSION['nombre']."</p>";
+				echo "</div>";
 			echo "</div>";
 			echo "<hr>";
 		}
@@ -57,8 +59,8 @@
 									echo "<td>".$usuario['nombre']."</td>";
 									echo "<td>".$usuario['usuario']."</td>";
 									echo "<td align='center'>".$usuario['tipo']."</td>";
-									echo "<td align='center'><a href='registro.php?idusr=".$usuario['id']."'>Modificar</a>";
-									echo "<td align='left'><a href='cambiarusuario.php?idusr=".$usuario['id']."'>Eliminar</a></td></td>";
+									echo "<td align='center'><a  class='btn btn-warning' href='registro.php?idusr=".$usuario['id']."'><span class='glyphicon glyphicon-pencil'></span> Modificar</a>";
+									echo "<td align='left'><a class='btn btn-danger' href='cambiarusuario.php?idusr=".$usuario['id']."'><span class='glyphicon glyphicon-trash'></span> Eliminar</a></td></td>";
 								echo "</tr>";
 							}
 						?>

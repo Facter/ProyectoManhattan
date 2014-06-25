@@ -8,16 +8,17 @@
 		$error= $_GET["error"];
 		switch ($error) {
 			case '1':
-				$message="El usuario no existe";
+				$message="<span class='label label-danger'>El usuario no existe</span>";
 				break;
 			case '2':
-				$message="El contraseña es incorrecta";
+				$message="
+				<span class='label label-warning'>La contraseña es incorrecta</span>";
 				break;
 			case '3':
-				$message="El usuario no existe";
+				$message="<span class='label label-default'>El usuario no existe</span>";
 				break;
 			case '4':
-				$message="El usuario se ha creado";
+				$message="<span class='label label-success'>El usuario se ha creado</span>";
 				break;
 		}
 	}
@@ -47,23 +48,27 @@
 						<?php echo $message; ?>
 					</div>
 				</div>
-				<div>
+				<div class="rows">
 					<form action="validarlogin.php" class="form-horizontal" method="POST" name="login" id='contact-form' class='contact-form2'>
 						<div class="form-group">
-							<label for="exampleInputEmail1">Usuario</label>
-							<input type="text" name="username" class="form-control" id="username" maxlength="15" placeholder="Usuario" size="25">
+								<div class="col-md-3">							
+									<label for="exampleInputEmail1">Usuario</label>
+									<input type="text" name="username" class="form-control" id="username" maxlength="15" placeholder="Usuario" size="25">
+			  		    		</div>
 			  		    </div>
 			  		    <div class="form-group">
-			  		    	<label for="exampleInputPassword1">Password</label>
-				  			<input type="password" name="userpwd" class="form-control" id="userpwd" maxlength="15" placeholder="Contraseña" size="25">
+			  		    	<div class="col-md-3">
+			  		    		<label for="exampleInputPassword1">Password</label>
+				  				<input type="password" name="userpwd" class="form-control" id="userpwd" maxlength="15" placeholder="Contraseña" size="25">
+							</div>
 						</div>
 					    <div class="checkbox">
 					  		 <label>
-					     		 <input type="checkbox"> Check me out
+					     		 <input type="checkbox"> Recordarme
 					   		 </label>
 					 	</div>
 					 	<hr>
-						<input type='submit' id='contact-form' class='btn btn-default' value='Iniciar sesión'> o <a href="registro.php" class="btn btn-default">Registrate</a>
+						<input type='submit' id='contact-form' class='btn btn-default' value='Iniciar sesión'> o <a href="registro.php" class="btn btn-primary">Registrate</a>
 					</form>
 				</div>
 

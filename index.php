@@ -32,15 +32,15 @@
 					    <span class='glyphicon glyphicon-plus'></span> Opciones <span class='caret'></span>
 					  </button>
 					  <ul class='dropdown-menu'>
-			    		<a href='cerrarsesion.php'> Cerrar sesion</a><br>					
+			    		<li><a href='cerrarsesion.php'><span class='glyphicon glyphicon-off'></span> Cerrar sesion</a></li>					
 				 ";
 				if ($_SESSION['tipo']==1) 
 					echo "
-			    		<a href='cambiarusuario.php'> Control de usuarios</a><br>
+			    		<li><a href='cambiarusuario.php'><span class='glyphicon glyphicon-cog'></span> Control-USRS</a></li>
 			  		  ";
 				if ($_SESSION['tipo']==2 or $_SESSION['tipo']==1) 
-						echo "<a href='ntemas.php'> Añadir nuevo tema</a>
-						</ul>"; 
+						echo "<li><a href='ntemas.php'><span class='glyphicon glyphicon-plus-sign'></span> Añadir nuevo tema</a>
+						</li></ul>"; 
 				else echo "</ul></div>";
 			}	
 			else
@@ -72,12 +72,12 @@
 
 					echo "<tr>";
 						echo "<td><b><h2>".$tema['titulo']."</h2></td>";	
-						echo "<td align='right' width=20%>";
+						echo "<td align='right' width=50%>";
 							//Mostrar botones segun el tipo del usuario
 								if (isset($_SESSION['tipo'])) {
 									if ($_SESSION['tipo']==2 or $_SESSION['tipo']==1) {	
-										echo "<a href='ntemas.php?id=".$tema['id']."'>Editar | </a>";
-										echo "<a href='ntemas.php?ideliminar=".$tema['id']."'>Eliminar | </a>";
+										echo "<a class='btn btn-info' href='ntemas.php?id=".$tema['id']."'>Editar</a> ";
+										echo "<a class='btn btn-danger' href='ntemas.php?ideliminar=".$tema['id']."'>Eliminar</a> ";
 
 									}
 									//Me gusta
@@ -86,8 +86,8 @@
 										$likes=mysql_query($sqllikes, $conexion);
 										$like= mysql_fetch_array($likes);
 										$num=$like['count(*)'];
-										echo "<a href='like.php?like=".$tema['id']."'>".$num." Likes</a>";
-										echo "<a href='ncomentario.php?ncomentario=".$tema['id']."&prev=".$tema['id']."'> | Comentar |</a>";
+										echo "<a class= 'btn btn-success' href='like.php?like=".$tema['id']."'>".$num." Likes</a> ";
+										echo "<a class='btn btn-default' href='ncomentario.php?ncomentario=".$tema['id']."&prev=".$tema['id']."'>Comentar</a> ";
 
 								}
 					//Cierre de TD y otras etiquetas
