@@ -17,21 +17,38 @@
 	      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 	    <![endif]-->
 		<!--Esto es para que aparesca el nombre de usuario y las opciones-->
-		<?php 
-			session_start();
-			if (isset($_SESSION['nombre'])) {
-				echo "Bienvenido ".$_SESSION['nombre']." <a href='cerrarsesion.php'>Cerrar sesion</a> | ";
-				if ($_SESSION['tipo']==1) 
-					echo "<a href='cambiarusuario.php'> Control de usuarios </a>";
-				if ($_SESSION['tipo']==2 or $_SESSION['tipo']==1) 
-						echo "<a href='ntemas.php'>| Añadir nuevo tema</a>"; 
-			}	
-			else
-				echo "Bienvenido <a href='login.php'>Inicia sesion</a> o <a href='registro.php'>registrate</a>";
-			?>
 	</head>
 	<body>
 		<div class="container">
+		<div class="row">
+		<?php 
+
+			session_start();
+			if (isset($_SESSION['nombre'])) {
+				echo "<div class='col-md-10'>Usted esta logeado como:<b> ".$_SESSION['usuario']. "</b></div>
+				<div class='col-md-2'> 
+				  <div class='btn-group'>
+					  <button class='btn btn-default btn-sm dropdown-toggle' type='button' data-toggle='dropdown'>
+					    <span class='glyphicon glyphicon-plus'></span> Opciones <span class='caret'></span>
+					  </button>
+					  <ul class='dropdown-menu'>
+			    		<a href='cerrarsesion.php'> Cerrar sesion</a><br>					
+				 ";
+				if ($_SESSION['tipo']==1) 
+					echo "
+			    		<a href='cambiarusuario.php'> Control de usuarios</a><br>
+			  		  ";
+				if ($_SESSION['tipo']==2 or $_SESSION['tipo']==1) 
+						echo "<a href='ntemas.php'> Añadir nuevo tema</a>
+						</ul>"; 
+				else echo "</ul></div>";
+			}	
+			else
+				echo "<div class='container'>Bienvenido 
+				<a href='login.php'>Inicia sesion</a> o <a href='registro.php'>registrate</a>";
+			?>
+			</div>
+		</div>
 			<h1>Blog de TIA. Bienvenido
 			<?php 
 				if (isset($_SESSION['nombre'])) 

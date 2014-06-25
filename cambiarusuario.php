@@ -1,9 +1,8 @@
 <!DOCTYPE HTML>
-
+<META CHARSET="UTF-8">
 <!-- Responsividad segun la resolución -->
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<META CHARSET="UTF-8">
 
 <?php 
 	session_start();
@@ -21,10 +20,13 @@
 
 		$sql="SELECT * FROM blog.usuarios;";
 		$usuarios=mysql_query($sql, $conexion);
-		if (isset($_SESSION['nombre'])) {
-			echo "<p align='right'>Hola ".$_SESSION['nombre']." ";
-			echo "<a href='cerrarsesion.php'>Cerrar sesion </a>";
-			echo "<a href='index.php'>| Página principal</a><p>";
+		if (isset($_SESSION['usuario'])) {
+			echo "<div class='col-md-8'></div>";
+			echo "<div class='col-md-4'>";
+			echo "<p align='right'><label class='glyphicon glyphicon-ok'></label> Hola ".$_SESSION['nombre']." ";
+			echo "<a href='cerrarsesion.php'>| Cerrar sesion </a>";
+			echo "<a href='index.php'>| <p align='right'><label class='glyphicon glyphicon-home'></label> Página principal |</a><p>";
+			echo "</div>";
 			echo "<hr>";
 		}
 		?>
@@ -44,14 +46,11 @@
 			<body>
 				<div class="container">		
 					<h2>Control de usuarios</h2>
-
-					<!-->Despliegue de usuarios con sus datos</!-->
-
-					<form action="cambiarusuario.php" method="GET"> <table width=50% align='center'>
+					<!--Despliegue de usuarios con sus datos-->
+					<form action="cambiarusuario.php" method="GET"> <table width=50% class="table table-hover" align='center'>
 						<tr align='center'>
 							<td ><b>Nombre</b></td><td><b>Usuario</b></td><td><b>Tipo</b></td><td colspan=2><b>Acciones</b></td>
 						</tr>
-						<tr><td colspan=5><hr></td></tr>
 						<?php  
 							while ($usuario = @mysql_fetch_array($usuarios)){
 								echo "<tr align='center'>";
@@ -65,7 +64,7 @@
 						?>
 					</form></table>
 
-					<!-->Termino de despliege</!-->
+					<!--Termino de despliege-->
 
 					    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 					    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
@@ -75,7 +74,7 @@
 			</body>
 		</html>
 
-		<!-->Seguridad</!-->
+		<!--Seguridad-->
 		<?php
 	}
 	else
