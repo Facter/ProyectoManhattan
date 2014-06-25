@@ -41,17 +41,31 @@
 	</head>
 	<body>
 		<div class="container">
-			<table border="0">	
-				<tr><td><h1> Inicia Sesión </h1></td></tr>
-				<form action="validarlogin.php" method="POST" name="login" id='contact-form' class='contact-form2'>
-					<tr><td align="center"><b>
+				<h1>Inicia Sesión</h1>
+				<div class="row">
+					<div class="col-xs-12 .col-sm-6 .col-md-12">
 						<?php echo $message; ?>
-					</b></td></tr>
-					<tr><td> <input type="text" name="username" id="username" maxlength="15" placeholder="Usuario" size="25" </td></tr>
-					<tr><td> <input type="password" name="userpwd" id="userpwd" maxlength="15" placeholder="Contraseña" size="25"></td><tr>
-					<tr><td> <input type='submit' id='contact-form' class='submit' value='Iniciar sesión'> o <a href="registro.php">Registrate</a></td></tr>
-				</form>
-			</table>
+					</div>
+				</div>
+				<div>
+					<form action="validarlogin.php" class="form-horizontal" method="POST" name="login" id='contact-form' class='contact-form2'>
+						<div class="form-group">
+							<label for="exampleInputEmail1">Usuario</label>
+							<input type="text" name="username" class="form-control" id="username" maxlength="15" placeholder="Usuario" size="25">
+			  		    </div>
+			  		    <div class="form-group">
+			  		    	<label for="exampleInputPassword1">Password</label>
+				  			<input type="password" name="userpwd" class="form-control" id="userpwd" maxlength="15" placeholder="Contraseña" size="25">
+						</div>
+					    <div class="checkbox">
+					  		 <label>
+					     		 <input type="checkbox"> Check me out
+					   		 </label>
+					 	</div>
+					 	<hr>
+						<input type='submit' id='contact-form' class='btn btn-default' value='Iniciar sesión'> o <a href="registro.php" class="btn btn-default">Registrate</a>
+					</form>
+				</div>
 
 			    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 			    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
