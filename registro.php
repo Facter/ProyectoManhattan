@@ -29,12 +29,12 @@
 					header("location:login.php?error=4");
 				}
 				else {
-					$mensaje = "El usuario ya existe";
+					$mensaje = "<hr><div class='alert alert-danger'>El usuario ya existe</div>";
 		 		} 
 			 }
 
 			 else {
-			 	$mensaje="<br><b>La contraseña es insegura<b><br>";
+			 	$mensaje="<hr><div class='alert alert-warning'>La contraseña es insegura</div>";
 			 }
 		}
 	}
@@ -85,25 +85,38 @@
 	</head>
 	<body>
 		<div class="container">
-			<h1>Registrate</h1>
-			<form action="registro.php" method="POST" name="registro" id='contact-form' class='contact-form2'>
-			<table>
-				<tr><td><b>Nombre:</b></td>
-					<td><input type="hidden" name="idusr" value="<?php echo $idusr; ?>">
-						<input type="text" name="nombre" placeholder="Ejemplo: Juan López"
-						<?php echo "value='".$rnombre."'></td></tr>";?>
-				<tr><td><b>Usuario:</b></td><td><input type="text" name="usuario"placeholder='Júan Lopez'
-					<?php echo "value='".$rusuario."'></td></tr>";?>
-				<tr><td><b>Contraseña:</b></td><td><input type="password" name="pass" placeholder="*******"value=<?php echo $rpass; ?>></td></tr>
-				<?php echo $mensaje; ?>
+			<h1><span class="glyphicon glyphicon-hand-right"></span> Registrate</h1>
+			<form action="registro.php" role="form" method="POST" name="registro" id='contact-form' class='contact-form2'>
+				<div class="form-group">
+   				 <label for="exampleInputEmail1"><b>Nombre: </b></label>
+					<input type="hidden" name="idusr" value="<?php echo $idusr; ?>">
+					<input class="form-control" type="text" name="nombre" placeholder="Ejemplo: Juan López"
+						<?php echo "value='".$rnombre."'>";?>
+				</div>
+				<div class="form-group">
+					 <label for="exampleInputEmail1"><b>Usuario: </b></label>
+					 <input class="form-control" type="text" name="usuario"placeholder='Júan Lopez'
+						<?php echo "value='".$rusuario."'>";?>
+				</div>
+				<div class="form-group">
+   			   		 <label for="exampleInputEmail1"><b>Contraseña: </b></label>
+					<input class="form-control" type="password" name="pass" placeholder="*******"value=<?php echo $rpass; ?>></td></tr>
+					<?php echo $mensaje; ?>
+				</div>
+
 				<!--Aqui inicia una seccion para cambiar el tipo de usuario-->
 				<?php if (isset($_GET['idusr']))
-					echo "<tr><td><b>Tipo</b></td><td><input type='text' name='tipo' placeholder='1, 2, 3' value='".$rtipo."'><td></tr>";
-					else
-					echo "<tr align='center'><td colspan='2'><i>Usted es usuario Tipo 3</i></td></tr>";
+					echo "<div class='form-group'>
+							<label for='exampleInputEmail1'><b>Tipo: </b></label><input class='form-control' type='text' name='tipo' placeholder='1, 2, 3' value='".$rtipo."'></div>";
+					else{
+
+					echo "<br><i>Usted es usuario Tipo 3</i></div>";
+					}
+
+				echo "<center><input class='btn btn-default' type='submit' value='Registrarme'> o <a class='btn btn-success' href='login.php'>Inicia Sesión</a></center>";
 				 ?>
-				<tr><td colspan='2'><input type='submit' value='Registrarme'> o <a href="login.php">Inicia Sesión</a></td></tr>
-				
+				 
+
 			</table>
 			</form>
 		</div>

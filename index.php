@@ -18,42 +18,53 @@
 	    <![endif]-->
 		<!--Esto es para que aparesca el nombre de usuario y las opciones-->
 	</head>
-	<body>
+	<body><hr>
 		<div class="container">
-		<div class="row">
-		<?php 
-
-			session_start();
-			if (isset($_SESSION['nombre'])) {
-				echo "<div class='col-md-10'>Usted esta logeado como:<b> ".$_SESSION['usuario']. "</b></div>
-				<div class='col-md-2'> 
-				  <div class='btn-group'>
-					  <button class='btn btn-default btn-sm dropdown-toggle' type='button' data-toggle='dropdown'>
-					    <span class='glyphicon glyphicon-plus'></span> Opciones <span class='caret'></span>
-					  </button>
-					  <ul class='dropdown-menu'>
-			    		<li><a href='cerrarsesion.php'><span class='glyphicon glyphicon-off'></span> Cerrar sesion</a></li>					
-				 ";
-				if ($_SESSION['tipo']==1) 
-					echo "
-			    		<li><a href='cambiarusuario.php'><span class='glyphicon glyphicon-cog'></span> Control-USRS</a></li>
-			  		  ";
-				if ($_SESSION['tipo']==2 or $_SESSION['tipo']==1) 
-						echo "<li><a href='ntemas.php'><span class='glyphicon glyphicon-plus-sign'></span> Añadir nuevo tema</a>
-						</li></ul>"; 
-				else echo "</ul></div>";
-			}	
-			else
-				echo "<div class='container'>Bienvenido 
-				<a href='login.php'>Inicia sesion</a> o <a href='registro.php'>registrate</a>";
-			?>
-			</div>
-		</div>
-			<h1>Blog de TIA. Bienvenido
+			<div class="row">
+		<p class="bg-success">
 			<?php 
-				if (isset($_SESSION['nombre'])) 
-					echo $_SESSION['nombre'];
-				echo "</h1>";
+
+				session_start();
+				if (isset($_SESSION['nombre'])) {
+					echo "<div class='col-md-8'>Usted esta logeado como:<b> ".$_SESSION['usuario']. "</b></div>
+					<div class='col-md-4'> 
+					  <button type='button' class='btn btn-success'><span class='glyphicon glyphicon-bell'></span> Notificaciones</button>
+					  <div class='btn-group'>
+						  <button class='btn btn-default dropdown-toggle' type='button' data-toggle='dropdown'>
+						    <span class='glyphicon glyphicon-plus'></span> Opciones <span class='caret'></span>
+						  </button>
+						  <ul class='dropdown-menu'>
+				    		<li><a href='cerrarsesion.php'><span class='glyphicon glyphicon-off'></span> Cerrar sesion</a></li>					
+					 ";
+					if ($_SESSION['tipo']==1) 
+						echo "
+				    		<li><a href='cambiarusuario.php'><span class='glyphicon glyphicon-cog'></span> Control-USRS</a></li>
+				  		  ";
+					if ($_SESSION['tipo']==2 or $_SESSION['tipo']==1) 
+							echo "<li><a href='ntemas.php'><span class='glyphicon glyphicon-plus-sign'></span> Añadir nuevo tema</a>
+							</li></ul>"; 
+					else echo "</ul></div>";
+				}	
+				else {
+					echo "<div class='container'>Bienvenido
+					<a href='login.php'>Inicia sesion</a> o <a href='registro.php'>registrate</a>";
+				}
+				?>
+			</p>
+			</div>
+		</div><hr>
+				<div class="row">
+					 <div class="col-md-1">
+						<img src="images/logo.gif" width='100px' class="img-circle">
+					 </div>
+					<div class="col-md-11">
+				<h1>BLOG DEL ABUELO |
+				<?php 
+					if (isset($_SESSION['nombre'])) 
+						echo $_SESSION['nombre'];
+					echo "</h1><hr></div></div>";
+
+
 				//Aqui termnina el enunciado del nombre
 				//Aqui inicia el despliegue de temas del blog
 				include_once("settings/settings.inc.php");
@@ -76,8 +87,8 @@
 							//Mostrar botones segun el tipo del usuario
 								if (isset($_SESSION['tipo'])) {
 									if ($_SESSION['tipo']==2 or $_SESSION['tipo']==1) {	
-										echo "<a class='btn btn-info' href='ntemas.php?id=".$tema['id']."'>Editar</a> ";
-										echo "<a class='btn btn-danger' href='ntemas.php?ideliminar=".$tema['id']."'>Eliminar</a> ";
+										echo "<a class='btn btn-default' href='ntemas.php?id=".$tema['id']."'><span class='glyphicon glyphicon-pencil'></span> Editar</a> ";
+										echo "<a class='btn btn-danger' href='ntemas.php?ideliminar=".$tema['id']."'><span class='glyphicon glyphicon-trash'></span> Eliminar</a> ";
 
 									}
 									//Me gusta
@@ -86,8 +97,8 @@
 										$likes=mysql_query($sqllikes, $conexion);
 										$like= mysql_fetch_array($likes);
 										$num=$like['count(*)'];
-										echo "<a class= 'btn btn-success' href='like.php?like=".$tema['id']."'>".$num." Likes</a> ";
-										echo "<a class='btn btn-default' href='ncomentario.php?ncomentario=".$tema['id']."&prev=".$tema['id']."'>Comentar</a> ";
+										echo "<a class= 'btn btn-success' href='like.php?like=".$tema['id']."'><span class='glyphicon glyphicon-thumbs-up'></span> ".$num." Likes</a> ";
+										echo "<a class='btn btn-default' href='ncomentario.php?ncomentario=".$tema['id']."&prev=".$tema['id']."'><span class='glyphicon glyphicon-comment'></span> Comentar</a> ";
 
 								}
 					//Cierre de TD y otras etiquetas
